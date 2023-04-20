@@ -1,7 +1,10 @@
-document.querySelector('form').addEventListener("submit", submitForm)
+# MFG(a)
 
-const url = "https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/login"
 
+## objectifyForm
+Converts a form to an object, suitable for sending JSON in a POST body
+
+```js
 import {objectifyForm} from './objectifyForm.js'
 
 async function submitForm(e) {
@@ -11,4 +14,4 @@ async function submitForm(e) {
         body: JSON.stringify(objectifyForm(e.target))
     })
 }
-
+```
