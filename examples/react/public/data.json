@@ -1,0 +1,32 @@
+{
+    "email": "example@example.com",
+    "password": "supersecretpassword",
+    "street_address": "123 Main St",
+    "city": "Anytown",
+    "states": [
+        {
+            "value": "AL",
+            "text": "Alabama"
+        },
+        {
+            "value": "AS",
+            "text": "Alaska"
+        },
+        {
+            "value": "AR",
+            "text": "Arkansas"
+        },
+        {
+            "value": "CA",
+            "text": "California"
+        },
+        {
+            "value": "TX",
+            "text": "Texas"
+        },
+        {
+            "value": "NY",
+            "text": "New York"
+        }
+    ]
+}
