@@ -60,3 +60,7 @@ __dirtyFields__ is a Set containing the fields that are currently modified:
 dirtyFields.size // tells you how many fields are modified.
 dirtyFields.has('zip') // tells you if "zip" is modified
 ```
+
+## Examples
+Examples can be found in the examples branch, here: 
+https://github.com/WeeHorse/mfga/tree/examples/examples
