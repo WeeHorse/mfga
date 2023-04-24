@@ -2,12 +2,18 @@
 
 ## Convert FormData to JS object
 
+install: `npm i mfga`
+
+use:
+
+```js
+import {objectifyForm, watchFormState, dirtyFields} from 'mfga'
+```
+
 ### objectifyForm
 Converts a form to an object, suitable for sending JSON in a POST body
 
 ```js
-import {objectifyForm} from './index.js'
-
 async function submitForm(e) {
     e.preventDefault()
     await fetch(url,{
