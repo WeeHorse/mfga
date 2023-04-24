@@ -2,7 +2,7 @@
 
 const url = "/some-url-to-post-or-put-to"
 
-import { objectifyForm, watchFormState, setInitialState } from '../../index.js'
+import { objectifyForm, watchFormState, setInitialState } from 'mfga'
 
 /* 
 Only if you load data into the form, like for an update, 

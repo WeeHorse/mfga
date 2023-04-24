@@ -1,4 +1,4 @@
-import { objectifyForm, watchFormState, setInitialState } from "../../../../index.js"
+import { objectifyForm, watchFormState, setInitialState } from "mfga"
 import { useLoaderData } from 'react-router-dom'
 
 export default function () {
