@@ -20,9 +20,9 @@ import {
 
 ## Handle Submit
 
-If you want to use the MFG(a) solutions in general, this wrapper function and form setup takes care of it:
+If you want to use the MFG(a) solutions in general, this wrapper function and form setup takes care of it. 
 
-### handleSubmit (event, url, method = 'post')
+### handleSubmit (event)
 
 #### Native
 ```html
@@ -38,6 +38,37 @@ If you want to use the MFG(a) solutions in general, this wrapper function and fo
     <input type="text" name="zip" />
     <input type="submit" value="Send" />
 </form>
+```
+
+Between the time of submit and response the form will have the class 'mfga-processing', which you can refer to for a css waiting animation. 
+
+#### Example CSS
+
+```css
+.mfga-processing::before {
+    content:'';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 2px;
+    display: block;
+    background: white;
+    box-shadow: 0 0 6px 2px rgba(100, 100, 100, 0.8);
+    animation: line 1.4s linear infinite;
+}
+
+@keyframes line {
+    0% {
+        transform: translateX(-100%) scale(1);
+    }
+    40% {
+        transform: translateX(280%) scale(5, 1.3);
+    }
+    100% {
+        transform: translateX(660%) scale(1);
+    }
+}
 ```
 
 ---
