@@ -1,24 +1,20 @@
-// objectifyForm
-
-export function objectifyForm(form){
-    const fields = Array.from(new FormData(form))
-    const o = {}
-    for(let f of fields){
-        if(o[f[0]]){
-            if(!o[f[0]].push){
-                o[f[0]] = [o[f[0]]]
-            }
-            o[f[0]].push(f[1])
-        }else{
-            o[f[0]] = f[1]
-        }
+// Handle Submit
+export async function handleSubmit(e){
+    e.preventDefault()   
+    e.target.classList.add('mfga-processing')
+    const result = await fetch(e.target.action,{
+        method : e.target.method,
+        body: JSON.stringify(objectifyForm(e.target))            
+    })
+    e.target.classList.remove('mfga-processing')
+    if(result.ok){
+        e.target.querySelector('*[type="submit"]').disabled = true
+        window.removeEventListener('beforeunload', dirtyNavigationListener)
+        return result
     }
-    return o
 }
 
-
-// formState
-
+// Handle Form State
 export const dirtyFields = new Set()
 let initialState = {}
 
@@ -30,6 +26,65 @@ export function setInitialState(state){
 
 export function watchFormState (e){
     (initialState[e.target.name] != e.target.value) ? dirtyFields.add(e.target.name) : dirtyFields.delete(e.target.name)
-    e.target.parentNode.querySelector('*[type="submit"]').disabled = (dirtyFields.size === 0)
+    e.target.closest('form').querySelector('*[type="submit"]').disabled = (dirtyFields.size === 0)        
+    preventDirtyNavigation()
 }
 
+
+// Handle Modified Form
+const dirtyNavDisabled = false
+let dirtyNavInited = false
+
+export function disableDirtyNavigation(){
+    dirtyNavDisabled = false
+}
+
+function preventDirtyNavigation(){
+    if(dirtyNavInited || dirtyNavDisabled) return
+    dirtyNavInited = true
+    window.addEventListener('beforeunload', dirtyNavigationListener)
+}
+
+function dirtyNavigationListener(event){
+    if(dirtyFields.size !== 0){
+        event.preventDefault();
+        event.returnValue = '';
+    }
+}
+
+// Objectify Form
+export function objectifyForm(form){
+    const obj = {}
+    for(let elem of form.elements){
+        switch(elem.type){
+            case 'radio':
+                if(!obj[elem.name]){
+                    obj[elem.name] = elem.checked? elem.value : null
+                }                
+            break;
+            case 'checkbox':
+                if(!obj[elem.name]?.push){
+                    obj[elem.name] = []
+                }
+                if(elem.checked){
+                    obj[elem.name].push(elem.value)
+                }
+            break;
+            case 'select-multiple':
+                if(!obj[elem.name]?.push){
+                    obj[elem.name] = []
+                }
+                for(let option of elem.options){
+                    if(option.selected){
+                        obj[elem.name].push(option.value)
+                    }
+                }
+            break;
+            default:
+                obj[elem.name] = elem.value? elem.value : null
+            break;
+        }        
+    }
+
+    return obj
+}
