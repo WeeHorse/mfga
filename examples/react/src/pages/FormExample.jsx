@@ -1,4 +1,4 @@
-import { objectifyForm, watchFormState, setInitialState } from "mfga"
+import { watchFormState, setInitialState, handleSubmit } from "../../../../index.js"
 import { useLoaderData } from 'react-router-dom'
 
 export default function () {
@@ -6,15 +6,7 @@ export default function () {
     const data = useLoaderData()
     setInitialState(data)
 
-    const submitCheckout = async (e)=>{
-        e.preventDefault()   
-        await fetch('/',{
-            method: 'post',
-            body: JSON.stringify(objectifyForm(e.target))
-        })
-    }
-
-    return <form id="form1" onSubmit={submitCheckout} onChange={watchFormState}>
+    return <form id="form1" onSubmit={handleSubmit} onChange={watchFormState} method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
 
         <label htmlFor="email">Email</label>
         <input type="email" name="email" defaultValue={data?.email}/>

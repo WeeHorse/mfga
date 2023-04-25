@@ -4,21 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MFG(a) Plain HTML Example</title>
     <script src="script.js" type="module" defer></script>
+    <link rel="stylesheet" href="style.css">    
 </head>
 <body>
-    <form id="form1">
+    <h1>MFG(a) Plain HTML Example</h1>
+    <form id="form1" onsubmit="submitForm(event)" onchange="watchFormState(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
         <legend>Form 1</legend>
+
         <input name="name" value="No name">
         <input name="slogan" value ="No slogan">
+
+        <select name="foo-or-bar">
+            <option>No option</option>
+            <option value="foo">Foo</option>
+            <option value="bar">Bar</option>
+        </select>
+
         <select name="pigs-in-a-blanket" multiple>
             <option>No option</option>
-            <option value="pigs" selected>Pigs</option>
+            <option value="pigs">Pigs</option>
             <option value="in">In</option>
             <option value="a">A</option>
             <option value="blanket">Blanket</option>
         </select>
+
+        <input name="browser" list="browsers" placeholder="Pick your poison">
+        <datalist id="browsers">
+            <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari">
+        </datalist>
+
+        <label><input type="radio" name="language" value="Java">Java is better</label>
+        <label><input type="radio" name="language" value="C#">C# is better </label>
+
+        <label><input type="checkbox" name="vehicle" value="Bike">I have a Bike</label>
+        <label><input type="checkbox" name="vehicle" value="Car">I have a Car</label>
+        <label><input type="checkbox" name="vehicle" value="Boat">I have a Boat</label>
+
         <input type="submit" value="submit" disabled>
     </form>
 </body>

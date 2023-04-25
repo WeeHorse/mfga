@@ -1,0 +1,43 @@
+/* example form css */
+
+h1{
+    text-align: center;
+}
+
+#form1{
+    display: flex;
+    flex-direction: column;
+    margin:2vh 25%;
+}
+
+#form1 input, 
+#form1 select {
+    margin-bottom: 1vh;
+}
+
+/* example loader bar at the top of the viewport when form is processing */
+
+.mfga-processing::before {
+    content:'';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 2px;
+    display: block;
+    background: white;
+    box-shadow: 0 0 6px 2px rgba(100, 100, 100, 0.8);
+    animation: line 1.4s linear infinite;
+}
+
+@keyframes line {
+    0% {
+        transform: translateX(-100%) scale(1);
+    }
+    40% {
+        transform: translateX(280%) scale(5, 1.3);
+    }
+    100% {
+        transform: translateX(660%) scale(1);
+    }
+}

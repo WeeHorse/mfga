@@ -1,31 +1,20 @@
+import { handleSubmit, watchFormState, setInitialState } from '../../index.js'
 
-
-const url = "/some-url-to-post-or-put-to"
-
-import { objectifyForm, watchFormState, setInitialState } from 'mfga'
+window.submitForm = handleSubmit // expose handleSubmit to html scope
+window.watchFormState = watchFormState // expose watchFormState to html scope
 
 /* 
-Only if you load data into the form, like for an update, 
-you should pass the loaded data (state) here. 
-Otherwise there's no need to call setInitalState.
+Pass data (state) here, like for an update (put). 
+Typically this would be a data object from fetch or similar.
+If there is no previous data, like for a create (post), 
+there is no need to call setInitialState 
 */
+
 setInitialState({
     name: "No name",
     slogan: "No slogan"
 })
 
-// watch the form
-document.querySelector('#form1').addEventListener("change", watchFormState)
 
-// listen to submit
-document.querySelector('#form1').addEventListener("submit", submitForm)
 
-async function submitForm(e) {
-    e.preventDefault()
-    await fetch(url,{
-        method: 'post',
-        // using objectifyForm to convert formData into a JS object
-        body: JSON.stringify(objectifyForm(e.target))
-    })
-}
 
