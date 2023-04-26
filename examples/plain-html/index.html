@@ -13,6 +13,9 @@
     <form id="form1" onsubmit="submitForm(event)" onchange="watchFormState(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
         <legend>Form 1</legend>
 
+        <input type="hidden" name="r2id" value="11"/>
+        <input type="hidden" name="d2id" value="22"/>
+
         <input name="name" value="No name">
         <input name="slogan" value ="No slogan">
 
@@ -42,9 +45,14 @@
         <label><input type="radio" name="language" value="Java">Java is better</label>
         <label><input type="radio" name="language" value="C#">C# is better </label>
 
-        <label><input type="checkbox" name="vehicle" value="Bike">I have a Bike</label>
-        <label><input type="checkbox" name="vehicle" value="Car">I have a Car</label>
-        <label><input type="checkbox" name="vehicle" value="Boat">I have a Boat</label>
+        <fieldset>
+            <legend>Vehicles</legend>
+            <label><input type="checkbox" name="vehicle" value="Bike">I have a Bike</label>
+            <label><input type="checkbox" name="vehicle" value="Car">I have a Car</label>
+            <label><input type="checkbox" name="vehicle" value="Boat">I have a Boat</label>
+        </fieldset>
+
+        <label><input type="checkbox" name="robot" value="true" checked>I am a Robot</label>
 
         <input type="submit" value="submit" disabled>
     </form>

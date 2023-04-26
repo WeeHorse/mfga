@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mfga": "^1.0.0"
+    "mfga": "^1.0.4"
   }
 }

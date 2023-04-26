@@ -1,7 +1,7 @@
 {
     "email": "example@example.com",
     "password": "supersecretpassword",
-    "street_address": "123 Main St",
+    "street_address": "122 Main St",
     "city": "Anytown",
     "states": [
         {
@@ -19,14 +19,55 @@
         {
             "value": "CA",
             "text": "California"
+        }
+    ],
+    "cars": [
+        {
+            "value": "ford",
+            "text": "Ford"
         },
         {
-            "value": "TX",
-            "text": "Texas"
+            "value": "chrysler",
+            "text": "Chrysler"
         },
         {
-            "value": "NY",
-            "text": "New York"
+            "value": "pontiac",
+            "text": "Pontiac"
+        },
+        {
+            "value": "chevrolet",
+            "text": "Chevrolet"
+        }
+    ],
+    "robot": true,
+    "languages": [
+        {
+            "value": "java",
+            "text": "Java is better",
+            "checked": true 
+        },
+        {
+            "value": "c#",
+            "text": "C# is better",
+            "checked": false 
+        }
+    ],
+    "pets": [
+        {
+            "value": "bird",
+            "text": "I have a bird",
+            "checked": true 
+        },
+        {
+            "value": "fish",
+            "text": "I have a fish",
+            "checked": false 
+        },
+        {
+            "value": "inbetween",
+            "text": "I have a inbetween",
+            "checked": true 
         }
     ]
+
 }
