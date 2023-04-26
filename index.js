@@ -63,11 +63,17 @@ export function objectifyForm(form){
                 }                
             break;
             case 'checkbox':
-                if(!obj[elem.name]?.push){
-                    obj[elem.name] = []
-                }
-                if(elem.checked){
-                    obj[elem.name].push(elem.value)
+                if(form[elem.name].length){
+                    if(!obj[elem.name]?.push){
+                        obj[elem.name] = []
+                    }
+                    if(elem.checked){
+                        obj[elem.name].push(elem.value)
+                    }
+                }else{
+                    if(elem.checked){
+                        obj[elem.name] = elem.value
+                    } 
                 }
             break;
             case 'select-multiple':
@@ -79,6 +85,9 @@ export function objectifyForm(form){
                         obj[elem.name].push(option.value)
                     }
                 }
+            break;
+            case 'submit':
+                // don't capture it
             break;
             default:
                 obj[elem.name] = elem.value? elem.value : null
