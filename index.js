@@ -89,6 +89,9 @@ export function objectifyForm(form){
             case 'submit':
                 // don't capture it
             break;
+            case 'fieldset':
+                // don't capture it
+            break;
             default:
                 obj[elem.name] = elem.value? elem.value : null
             break;
