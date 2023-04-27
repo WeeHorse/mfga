@@ -1,6 +1,6 @@
 {
   "name": "mfga",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Thin tools to assist in basic form handling",
   "main": "index.js",
   "directories": {

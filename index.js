@@ -3,7 +3,7 @@ export async function handleSubmit(e){
     e.preventDefault()   
     e.target.classList.add('mfga-processing')
     const result = await fetch(e.target.action,{
-        method : e.target.method,
+        method : e.target.attributes.method.value, // bypassing e.target.method since it only allows post, get and dialog: https://www.w3.org/TR/html401/interact/forms.html#h-17.13
         headers: {
             "Content-Type": "application/json"
         },
