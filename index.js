@@ -4,6 +4,9 @@ export async function handleSubmit(e){
     e.target.classList.add('mfga-processing')
     const result = await fetch(e.target.action,{
         method : e.target.method,
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(objectifyForm(e.target))            
     })
     e.target.classList.remove('mfga-processing')
