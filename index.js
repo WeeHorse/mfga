@@ -1,36 +1,46 @@
 // Handle Submit
 export async function handleSubmit(e){
+    const form = e.target
     e.preventDefault()   
-    e.target.classList.add('mfga-processing')
-    const result = await fetch(e.target.action,{
-        method : e.target.attributes.method.value, // bypassing e.target.method since it only allows post, get and dialog: https://www.w3.org/TR/html401/interact/forms.html#h-17.13
+    form.classList.add('mfga-processing')
+    const result = await fetch(form.action,{
+        method : form.attributes.method.value, // bypassing e.target.method since it only allows post, get and dialog: https://www.w3.org/TR/html401/interact/forms.html#h-17.13
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(objectifyForm(e.target))            
+        body: JSON.stringify(objectifyForm(form))            
     })
-    e.target.classList.remove('mfga-processing')
+    form.classList.remove('mfga-processing')
     if(result.ok){
-        e.target.querySelector('*[type="submit"]').disabled = true
-        window.removeEventListener('beforeunload', dirtyNavigationListener)
+        form.querySelector('*[type="submit"]').disabled = true
+        window.removeEventListener('beforeunload', form.dirtyNavigationListener)
         return result
     }
 }
 
 // Handle Form State
-export const dirtyFields = new Set()
-let initialState = {}
+// export const dirtyFields = new Set()
 
-export function setInitialState(state){
-    if(state){
-        initialState = state 
-    }
-}
+// let initialState = {}
+
+// export function setInitialState(state){
+//     if(state){
+//         initialState = state 
+//     }
+// }
 
 export function watchFormState (e){
-    (initialState[e.target.name] != e.target.value) ? dirtyFields.add(e.target.name) : dirtyFields.delete(e.target.name)
-    e.target.closest('form').querySelector('*[type="submit"]').disabled = (dirtyFields.size === 0)        
-    preventDirtyNavigation()
+    const form = e.target.closest('form')
+    if(form.initialState === undefined){
+        form.initialState = {}
+    }
+    if(form.dirtyFields === undefined){
+        form.dirtyFields = new Set()
+    }
+    (form.initialState[e.target.name] != e.target.value) ? form.dirtyFields.add(e.target.name) : form.dirtyFields.delete(e.target.name)
+    console.log(form.dirtyFields)
+    form.querySelector('*[type="submit"]').disabled = (form.dirtyFields.size === 0)        
+    preventDirtyNavigation(form)    
 }
 
 
@@ -38,22 +48,28 @@ export function watchFormState (e){
 const dirtyNavDisabled = false
 let dirtyNavInited = false
 
-export function disableDirtyNavigation(){
-    dirtyNavDisabled = false
-}
+// export function disableDirtyNavigation(){
+//     dirtyNavDisabled = false
+// }
 
-function preventDirtyNavigation(){
-    if(dirtyNavInited || dirtyNavDisabled) return
-    dirtyNavInited = true
-    window.addEventListener('beforeunload', dirtyNavigationListener)
-}
-
-function dirtyNavigationListener(event){
-    if(dirtyFields.size !== 0){
-        event.preventDefault();
-        event.returnValue = '';
+function preventDirtyNavigation(form){
+    if(form.dirtyNavInited || form.dirtyNavDisabled) return
+    form.dirtyNavInited = true
+    form.dirtyNavigationListener = e => {
+        if(dirtyFields.size !== 0){
+            e.preventDefault();
+            e.returnValue = '';
+        }
     }
+    window.addEventListener('beforeunload', form.dirtyNavigationListener)
 }
+
+// function dirtyNavigationListener(event){
+//     if(dirtyFields.size !== 0){
+//         event.preventDefault();
+//         event.returnValue = '';
+//     }
+// }
 
 // Objectify Form
 export function objectifyForm(form){
