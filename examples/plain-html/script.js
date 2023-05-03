@@ -1,4 +1,4 @@
-import { handleSubmit, watchFormState, setInitialState } from 'mfga'
+import { handleSubmit, watchFormState, setInitialState } from '../../index.js'
 
 window.submitForm = handleSubmit // expose handleSubmit to html scope
 window.watchFormState = watchFormState // expose watchFormState to html scope

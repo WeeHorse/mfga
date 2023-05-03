@@ -11,7 +11,7 @@
 <body>
     <h1>MFG(a) Plain HTML Example</h1>
     <form id="form1" onsubmit="submitForm(event)" onchange="watchFormState(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
-        <legend>Form 1</legend>
+        <h2>Form 1</h2>
 
         <input type="hidden" name="r2id" value="11"/>
         <input type="hidden" name="d2id" value="22"/>
@@ -33,6 +33,20 @@
             <option value="blanket">Blanket</option>
         </select>
 
+        <label><input type="checkbox" name="robot" value="true" checked>I am a Robot</label>
+
+        <input type="submit" value="submit" disabled>
+    </form>
+ 
+    <form id="form2" onsubmit="submitForm(event)" onchange="watchFormState(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
+        <h2>Form 2</h2>
+
+        <input type="hidden" name="r2id" value="11"/>
+        <input type="hidden" name="d2id" value="22"/>
+
+        <input name="name" value="No name">
+        <input name="slogan" value ="No slogan">
+
         <input name="browser" list="browsers" placeholder="Pick your poison">
         <datalist id="browsers">
             <option value="Internet Explorer">
@@ -52,7 +66,7 @@
             <label><input type="checkbox" name="vehicle" value="Boat">I have a Boat</label>
         </fieldset>
 
-        <label><input type="checkbox" name="robot" value="true" checked>I am a Robot</label>
+        <label><input type="checkbox" name="robot" value="true">I am a Robot</label>
 
         <input type="submit" value="submit" disabled>
     </form>
