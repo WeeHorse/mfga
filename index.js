@@ -3,8 +3,7 @@
 export async function handleSubmit(e){
     const form = e.target
     e.preventDefault()   
-    form.classList.add('mfga-processing')
-    
+    form.classList.add('mfga-processing')    
     const result = await fetch(form.action,{
         method : form.attributes.method.value, // bypassing e.target.method since it only allows post, get and dialog: https://www.w3.org/TR/html401/interact/forms.html#h-17.13
         headers: {
@@ -32,8 +31,6 @@ export function watchFormState (e){
     }else{
         form.dirtyFields.delete(field.name)
     }
-    console.log(fieldState(field))
-    console.log(form.dirtyFields)
     form.dirty = (form.dirtyFields.size === 0) 
     form.querySelector('*[type="submit"]').disabled = form.dirty        
     preventDirtyNavigation(form)    
@@ -66,28 +63,30 @@ function fieldState(field){
             }
         break;
         case 'checkbox':
-            const isMultipleFieldsArray = field.closest('form')[field.name].length
-            // now we have to iterate over the array, every time, not like this:
-            if(isMultipleFieldsArray){
-                value = field.checked? field.value : null 
-            }else{
+            if(field.closest('form')[field.name].length){ // multiple
+                value = []
+                for(let checkbox of field.closest('form')[field.name]){
+                    if(checkbox.defaultChecked !== checkbox.checked) changed = true
+                    if(checkbox.checked) value.push(checkbox.value)
+                }
+            }else{ // single
                 value = field.checked? (field.value === "true"? true : field.value) : (field.value === "true"? false : null)
+                changed = field.defaultChecked !== field.checked
             }
             return {
-                changed: field.defaultChecked !== field.checked,
-                value,
-                isMultipleFieldsArray
+                changed,
+                value
             }
         break;
         case 'select-multiple':
-            const values = []
+            value = []
             for(let option of field.options){
                 if(option.defaultSelected !== option.selected) changed = true
-                if(option.selected) values.push(option.value)
+                if(option.selected) value.push(option.value)
             }            
             return {
                 changed,
-                value: values
+                value
             }
         break;
         case 'select-one':
@@ -116,17 +115,7 @@ export function objectifyForm(form){
     const body = {}
     for(let field of form.elements){
         if(['submit', 'fieldset'].includes(field.type)) continue;
-        const state = fieldState(field)
-        if(state.isMultipleFieldsArray){
-            if(!body[field.name]){
-                body[field.name] = []
-            }
-            if(state.value){
-                body[field.name].push(state.value)
-            }
-        }else{
-            body[field.name] = state.value
-        } 
+        body[field.name] = fieldState(field).value
     }
     return body
 }
