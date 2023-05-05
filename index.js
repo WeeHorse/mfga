@@ -67,6 +67,7 @@ function fieldState(field){
         break;
         case 'checkbox':
             const isMultipleFieldsArray = field.closest('form')[field.name].length
+            // now we have to iterate over the array, every time, not like this:
             if(isMultipleFieldsArray){
                 value = field.checked? field.value : null 
             }else{
