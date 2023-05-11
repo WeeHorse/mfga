@@ -78,6 +78,7 @@ Between the time of submit and response the form will have the class 'mfga-proce
 * Keeps track of your form state.
 * Toggles the disabled prop on your submit button so that you cannot send an unmodified form, if you have a button or input with the type property set to type="submit".
 
+#### Reacty
 ```html
 <form onChange={watchFormState}>
     <input type="text" name="zip" />
@@ -87,9 +88,10 @@ Between the time of submit and response the form will have the class 'mfga-proce
 
 _Note that you need to manually set disabled as default (above)_
 
-### What about inital state? 
+### What about initial state? 
 Just apply it directly to the fields in your form:
 
+#### Reacty
 ```html
 <form onChange={watchFormState} onSubmit="handleSubmit">
     <input type="text" name="zip" value={zip}/>
@@ -98,7 +100,21 @@ Just apply it directly to the fields in your form:
 ```
 ---
 
+## Upload files
+Just set the form as __multipart__ and use the __handleFiles__ method and the JSON object posted will have a files array:
+
+```html
+<form enctype="multipart/form-data" onsubmit="handleSubmit(event)" onchange="watchFormState(event)" action="/send/to/this-url" method="post">
+    <input name="slogan" value="No slogan">
+    <input type="file" onchange="handleFiles(event)" name="files" multiple> 
+    <input type="submit" value="Upload" disabled>
+</form>
+```
+
+---
+
 ## Objectify Form
+A helper function, that you may use if you wish to, well, just use this or parts of MFG(a) and not the whole thing..
 Converts a form to an object, suitable for sending JSON in a POST body. Normally you wouldn't call it directly using MFG(a) but if you want to write your own submit handler you can use it to convert the form data.
 
 ```js

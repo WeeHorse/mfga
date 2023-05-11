@@ -114,8 +114,27 @@ function fieldState(field){
 export function objectifyForm(form){
     const body = {}
     for(let field of form.elements){
-        if(['submit', 'fieldset'].includes(field.type)) continue;
-        body[field.name] = fieldState(field).value
+        if(!field.name || ['submit','reset','fieldset','button'].includes(field.type)) continue;
+        if(field.type === 'file') body[field.name] = field.fileList || field.files
+        else body[field.name] = fieldState(field).value
     }
     return body
+}
+
+export function handleFiles(e){
+    // Get a reference to the file
+    const field = e.target
+    field.fileList = []
+    for(let file of field.files){        
+        const reader = new FileReader()
+        reader.onloadend = () => {
+            field.fileList.push({
+                dataURL: reader.result,
+                name: file?.name,
+                lastModified: new Date(file?.lastModified).toLocaleString('sv-SE'),
+                size: file?.size
+            })
+        };
+        reader.readAsDataURL(file);
+    }
 }
