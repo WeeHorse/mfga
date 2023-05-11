@@ -10,10 +10,11 @@ Use: _import the methods you need from_
 import {
     handleSubmit, 
     watchFormState, 
+    handleFiles,
     objectifyForm
 } from 'mfga'
 ```
-*Normally you only need __handleSubmit__ and __watchFormState__*
+*Normally you only need __handleSubmit__ and __watchFormState__ and possibly __handleFiles__*
 
 ---
 
