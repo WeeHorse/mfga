@@ -113,9 +113,9 @@ function fieldState(field){
 // Convert form fields to payload object 
 export function objectifyForm(form){
     const body = {}
-    for(let field of form.elements){
-        if(!field.name || ['submit','reset','fieldset','button'].includes(field.type)) continue;
-        if(field.type === 'file') body[field.name] = field.fileList || field.files
+    for(let field of form.elements){        
+        if(!field.name || ['submit','reset','fieldset','button'].includes(field.type)) continue;
+        if(field.type === 'file') body[field.name] = field.fileList || field.files
         else body[field.name] = fieldState(field).value
     }
     return body
