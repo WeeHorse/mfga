@@ -4,14 +4,27 @@ h1{
     text-align: center;
 }
 
+main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 form{
     display: flex;
     flex-direction: column;
-    margin:2vh 25%;
+    margin:2vh 2vw;
+    width: 250px;
 }
 
-form input, 
-form select {
+label{
+    display:block;
+}
+
+input, 
+select,
+label,
+fieldset,
+button {
     margin-bottom: 1vh;
 }
 

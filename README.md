@@ -9,13 +9,13 @@ Use: _import the methods you need from_
 ```js
 import {
     handleSubmit, 
-    setInitialState, 
     watchFormState, 
-    dirtyFields, 
-    disableDirtyNavigation,
+    handleFiles,
     objectifyForm
 } from 'mfga'
 ```
+*Normally you only need __handleSubmit__ and __watchFormState__ and possibly __handleFiles__*
+
 ---
 
 ## Handle Submit
@@ -26,7 +26,7 @@ If you want to use the MFG(a) solutions in general, this wrapper function and fo
 
 #### Native
 ```html
-<form onsubmit="submitForm" onchange="watchFormState" action="/send/to/this-url" method="post">
+<form onsubmit="handleSubmit(event)" onchange="watchFormState(event)" action="/send/to/this-url" method="post">
     <input type="text" name="zip" />
     <input type="submit" value="Send" />
 </form>
@@ -34,7 +34,7 @@ If you want to use the MFG(a) solutions in general, this wrapper function and fo
 
 #### Reacty
 ```html
-<form onSubmit={submitForm} onChange={watchFormState} action="/send/to/this-url" method="post">
+<form onSubmit={handleSubmit} onChange={watchFormState} action="/send/to/this-url" method="post">
     <input type="text" name="zip" />
     <input type="submit" value="Send" />
 </form>
@@ -79,6 +79,7 @@ Between the time of submit and response the form will have the class 'mfga-proce
 * Keeps track of your form state.
 * Toggles the disabled prop on your submit button so that you cannot send an unmodified form, if you have a button or input with the type property set to type="submit".
 
+#### Reacty
 ```html
 <form onChange={watchFormState}>
     <input type="text" name="zip" />
@@ -88,40 +89,34 @@ Between the time of submit and response the form will have the class 'mfga-proce
 
 _Note that you need to manually set disabled as default (above)_
 
-### setInitialState (state)
-_(Optional)_ Apply you loaded data with this so watchFormState can watch if the form changes from the loaded data. _If not used, the initial state will be empty values._
+### What about initial state? 
+Just apply it directly to the fields in your form:
 
-```js
-setInitialState({
-    zip: "12345"
-})
-
+#### Reacty
+```html
+<form onChange={watchFormState} onSubmit="handleSubmit">
+    <input type="text" name="zip" value={zip}/>
+    <input type="submit" disabled value="Send" />
+</form>
 ```
-
-_Note: This does not preload the data into the form, you have to do that by some other means, this only references the loaded data for watchFormState to match changes to._
-
-### dirtyFields
-You don't have to explicitly call dirtyFields if all you want is for the submit button to toggle and thus prevent sending an unmodified form. 
-
-__dirtyFields__ is a Set containing the fields that are currently modified:
-
-
-```js
-dirtyFields.size // tells you how many fields are modified.
-dirtyFields.has('zip') // tells you if "zip" is modified
-```
-
 ---
 
-## Handle Modified Form
+## Upload files
+Just set the form as __multipart__ and use the __handleFiles__ method and the JSON object posted will have a files array:
 
-### disableDirtyNavigation
-The default behaviour of watchFormState is to confirm if the user wants to leave the form (by reloading, closing or navigating away). If you wish to disable this for your form, just call `disableDirtyNavigation()`
+```html
+<form enctype="multipart/form-data" onsubmit="handleSubmit(event)" onchange="watchFormState(event)" action="/send/to/this-url" method="post">
+    <input name="slogan" value="No slogan">
+    <input type="file" onchange="handleFiles(event)" name="files" multiple> 
+    <input type="submit" value="Upload" disabled>
+</form>
+```
 
 ---
 
 ## Objectify Form
-Converts a form to an object, suitable for sending JSON in a POST body
+A helper function, that you may use if you wish to, well, just use this or parts of MFG(a) and not the whole thing..
+Converts a form to an object, suitable for sending JSON in a POST body. Normally you wouldn't call it directly using MFG(a) but if you want to write your own submit handler you can use it to convert the form data.
 
 ```js
 async function submitForm(e) {
