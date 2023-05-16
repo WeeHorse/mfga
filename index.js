@@ -114,7 +114,7 @@ function fieldState(field){
 export function objectifyForm(form){
     const body = {}
     for(let field of form.elements){
-        if(['submit', 'fieldset'].includes(field.type)) continue;
+        if(!field.name || ['submit', 'fieldset'].includes(field.type)) continue;
         body[field.name] = fieldState(field).value
     }
     return body
