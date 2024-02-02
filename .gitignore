@@ -1,6 +1,8 @@
 # no code examples in main
 examples/
 
+impossivbe_string_will_never_match
+
 # Logs
 logs
 *.log
