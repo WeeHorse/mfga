@@ -10,119 +10,23 @@
 </head>
 <body>
     <h1>MFG(a) Plain HTML Example</h1>
-<<<<<<< HEAD
-    <form id="form1" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
-        <h2>Form 1</h2>
-
-        <input type="hidden" name="r2id" value="11"/>
-        <input type="hidden" name="d2id" value="22"/>
-
-        <input name="name">
-        <input name="slogan">
-
-        <select name="foo-or-bar">
-            <option>No option</option>
-            <option value="foo" selected>Foo</option>
-            <option value="bar">Bar</option>
-        </select>
-
-        <select name="pigs-in-a-blanket" multiple>
-            <option>No option</option>
-            <option value="pigs">Pigs</option>
-            <option value="in">In</option>
-            <option value="a">A</option>
-            <option value="blanket">Blanket</option>
-        </select>
-
-        <label><input type="checkbox" name="robot" value="true" checked>I am a Robot</label>
-
-        <input type="submit" value="submit" disabled>
-    </form>
- 
-
-
-    <form id="form2" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="put" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/update">
-        <h2>Form 2</h2>
-
-        <input type="hidden" name="r2id" value="11"/>
-        <input type="hidden" name="d2id" value="22"/>
-
-        <input name="name" value="No name">
-        <input name="slogan" value ="No slogan">
-
-        <input name="browser" list="browsers" placeholder="Pick your poison">
-        <datalist id="browsers">
-            <option value="Internet Explorer">
-            <option value="Firefox">
-            <option value="Chrome">
-            <option value="Opera">
-            <option value="Safari">
-        </datalist>
-
-        <label><input type="radio" name="language" value="Java">Java is better</label>
-        <label><input type="radio" name="language" value="C#">C# is better </label>
-
-        <fieldset>
-            <legend>Vehicles</legend>
-            <label><input type="checkbox" name="vehicle" value="Bike">I have a Bike</label>
-            <label><input type="checkbox" name="vehicle" value="Car">I have a Car</label>
-            <label><input type="checkbox" name="vehicle" value="Boat">I have a Boat</label>
-        </fieldset>
-
-        <label><input type="checkbox" name="robot" value="true">I am a Robot</label>
-
-        <label><input type="checkbox" name="android" value="3CPO" checked>I am not a Humanoid</label>
-        
-        <input type="reset" value="reset">
-        <input type="submit" value="submit" disabled>
-    </form>
-
-    <form id="form3" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
-        <h2>Form 3</h2>
-        <label><input type="email" name="email">Email</label>
-        <label><input type="password" name="password">Password</label>
-        <label><input type="number" name="number" min="1900" max="2030" step="10" value="2020">Number</label>        
-        <label><input type="range" name="range">Range</label>
-        <label><input type="color" name="color">Color</label>        
-        <label><input type="date" name="date">Date</label>
-        <label><input type="time" name="time">Time</label>
-        <label><input type="datetime-local" name="datetime">Date and time</label>        
-        <label><input type="month" name="month">Month</label>
-        <label><input type="week" name="week">Week</label>        
-        <label><input type="search" name="search">Search</label>
-        <label><input type="tel" name="tel">Tel</label>
-        <label><input type="url" name="url">Url</label>  
-        
-        <label><input type="text" value="Missing name attribute">This field should be ignored in the post data and in the dirty check</label>  
-
-        <input type="submit" value="submit" disabled>
-    </form>
-
-    <form enctype="multipart/form-data" id="form4" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
-        <h2>Form 4</h2>
-        <input name="name" value="No name">
-        <input name="slogan" value ="No slogan">
-        <label><input type="file" name="files" multiple>Select files</label>  
-        <input type="reset" value="reset">
-        <input type="submit" value="submit" disabled>
-    </form>
-=======
     <main>
+
         <form id="form1" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
             <h2>Form 1</h2>
-
+    
             <input type="hidden" name="r2id" value="11"/>
             <input type="hidden" name="d2id" value="22"/>
-
+    
             <input name="name">
             <input name="slogan">
-
+    
             <select name="foo-or-bar">
                 <option>No option</option>
                 <option value="foo" selected>Foo</option>
                 <option value="bar">Bar</option>
             </select>
-
+    
             <select name="pigs-in-a-blanket" multiple>
                 <option>No option</option>
                 <option value="pigs">Pigs</option>
@@ -130,13 +34,11 @@
                 <option value="a">A</option>
                 <option value="blanket">Blanket</option>
             </select>
-
+    
             <label><input type="checkbox" name="robot" value="true" checked>I am a Robot</label>
-
+    
             <input type="submit" value="submit" disabled>
         </form>
-    
-
 
         <form id="form2" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="put" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/update">
             <h2>Form 2</h2>
@@ -172,7 +74,7 @@
             
             <input type="reset" value="reset">
             <input type="submit" value="submit" disabled>
-        </form>
+        </form>    
 
         <form id="form3" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
             <h2>Form 3</h2>
@@ -192,7 +94,10 @@
                 <label><input type="month" name="month">Month</label>
                 <label><input type="week" name="week">Week</label>      
             </fieldset>                
-            <button type="button">Just a button of type button</button>            
+            <button type="button">Just a button of type button</button>   
+            
+            <label><input type="text" value="Missing name attribute">This field should be ignored in the post data and in the dirty check</label>  
+
             <input type="reset" value="Reset form">
             <input type="submit" value="Submit form" disabled>
         </form>
@@ -201,10 +106,11 @@
             <h2>Form 4</h2>
             <input name="name" value="No name">
             <input name="slogan" value ="No slogan">
-            <label><input type="file" onchange="handleFiles(event)" name="files" multiple>Select files</label>  
+            <label><input type="file" name="files" multiple>Select files</label>  
+            <input type="reset" value="reset">
             <input type="submit" value="submit" disabled>
         </form>
+
     </main>
->>>>>>> 0f634dad443338ef890bb2584c760f7bbc84acdc
 </body>
 </html>
