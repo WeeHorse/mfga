@@ -1,6 +1,6 @@
 # MFG(a)
 
-A collection of tools, made as thin as possible, to aid in the most common conversion and processing tasks related to form state and submission. This module does not rely on any other modules.
+Making Forms Great (again) is a collection of standard enhancements for forms, made as thin as possible, to aid in the most common conversion and processing tasks related to form state and submission. This module does not rely on any other modules at all and can be used natively or with a frontend framework. Examples below are given both as native and for React, but it should be trivial to apply the MFG(a) attributes and methods to any form with any framework.
 
 Install: `npm i mfga`
 
@@ -10,11 +10,10 @@ Use: _import the methods you need from_
 import {
     handleSubmit, 
     watchFormState, 
-    handleFiles,
-    objectifyForm
+    handleFiles
 } from 'mfga'
 ```
-*Normally you only need __handleSubmit__ and __watchFormState__ and possibly __handleFiles__*
+*Normally you only need __handleSubmit__ and __watchFormState__, and __handleFiles__ if you are going to upload files.*  
 
 ---
 
@@ -119,6 +118,11 @@ A helper function, that you may use if you wish to, well, just use this or parts
 Converts a form to an object, suitable for sending JSON in a POST body. Normally you wouldn't call it directly using MFG(a) but if you want to write your own submit handler you can use it to convert the form data.
 
 ```js
+import {
+    handleSubmit, 
+    objectifyForm
+} from 'mfga'
+
 async function submitForm(e) {
     e.preventDefault()
     await fetch(url,{
@@ -130,7 +134,7 @@ async function submitForm(e) {
 
 ```html
 <form onSubmit={submitForm}>
-    <input type="text" name="zip" />
+    <input type="text" name="zip"/>
     <input type="submit" value="Send" />
 </form>
 ```
