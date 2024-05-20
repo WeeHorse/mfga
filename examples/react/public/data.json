@@ -21,6 +21,20 @@
             "text": "California"
         }
     ],
+    "browsers":[
+        {
+            "value": "Internet Explorer"
+        },
+        {
+            "value": "Firefox"
+        },
+        {
+            "value": "Chrome"
+        },
+        {
+            "value": "Safari"
+        }
+    ],
     "cars": [
         {
             "value": "ford",

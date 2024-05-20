@@ -1,12 +1,12 @@
-import { watchFormState, setInitialState, handleSubmit } from "mfga"
+import { watchFormState, handleSubmit } from "mfga"
 import { useLoaderData } from 'react-router-dom'
 
 export default function () {
 
     const data = useLoaderData()
-    setInitialState(data)
 
-    return <form id="form1" onSubmit={handleSubmit} onChange={watchFormState} method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
+    return (
+        <form id="form1" onSubmit={handleSubmit} onChange={watchFormState} method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
 
         <input type="hidden" name="hidden_id" value={11}/>
 
@@ -30,6 +30,12 @@ export default function () {
         <label htmlFor="zip">Zip</label>
         <input type="text" name="zip" defaultValue={data?.zip} />
 
+        <label htmlFor="browser">Browser</label>
+        <input name="browser" list="browsers" placeholder="Pick your poison" />
+        <datalist id="browsers">
+            {data?.browsers.map(browser=> <option key={browser.value} value={browser.value} />)}
+        </datalist>
+
         <label htmlFor="cars">Cars</label>
         <select name="cars" multiple>
             {data?.cars.map(car=> <option key={car.value} value={car.value}>{car.text}</option>)}
@@ -47,4 +53,5 @@ export default function () {
         
         <input type="submit" disabled value="Send"/>
     </form>
+    )
 }

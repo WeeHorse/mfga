@@ -7,7 +7,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    return <RouterProvider router={
+    <RouterProvider router={
         createBrowserRouter(
             createRoutesFromElements(
                 <Route element={<App/>}>
