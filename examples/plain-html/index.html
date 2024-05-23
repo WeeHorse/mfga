@@ -12,7 +12,7 @@
     <h1>MFG(a) Plain HTML Example</h1>
     <main>
 
-        <form id="form1" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
+        <form id="form1" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://api.restful-api.dev/objects">
             <h2>Form 1</h2>
     
             <input type="hidden" name="r2id" value="11"/>
@@ -20,7 +20,7 @@
     
             <input name="name">
             <input name="slogan">
-    
+
             <select name="foo-or-bar">
                 <option>No option</option>
                 <option value="foo" selected>Foo</option>
@@ -34,13 +34,26 @@
                 <option value="a">A</option>
                 <option value="blanket">Blanket</option>
             </select>
+
+            <select name="no-selected-option">
+                <option>First option is default</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+            </select>
+
+            <select name="multiple-pre-selected-options" multiple>
+                <option value="pigs" selected>Pigs</option>
+                <option value="in" selected>In</option>
+                <option value="a">A</option>
+                <option value="blanket">Blanket</option>
+            </select>
     
             <label><input type="checkbox" name="robot" value="true" checked>I am a Robot</label>
     
             <input type="submit" value="submit" disabled>
         </form>
 
-        <form id="form2" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="put" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/update">
+        <form id="form2" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://api.restful-api.dev/objects">
             <h2>Form 2</h2>
 
             <input type="hidden" name="r2id" value="11"/>
@@ -76,7 +89,7 @@
             <input type="submit" value="submit" disabled>
         </form>    
 
-        <form id="form3" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
+        <form id="form3" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://api.restful-api.dev/objects">
             <h2>Form 3</h2>
             <label><input type="email" name="email">Email</label>
             <label><input type="password" name="password">Password</label>
@@ -102,7 +115,7 @@
             <input type="submit" value="Submit form" disabled>
         </form>
 
-        <form enctype="multipart/form-data" id="form4" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
+        <form enctype="multipart/form-data" id="form4" onchange="watchFormState(event)" onsubmit="handleSubmit(event)" method="post" action="https://api.restful-api.dev/objects">
             <h2>Form 4</h2>
             <input name="name" value="No name">
             <input name="slogan" value ="No slogan">
