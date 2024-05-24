@@ -116,7 +116,10 @@ export function objectifyForm(form){
     for(let field of form.elements){        
         if(!field.name || ['submit','reset','fieldset','button'].includes(field.type)) continue;
         if(field.type === 'file') body[field.name] = field.fileList || field.files
-        else body[field.name] = fieldState(field).value
+        // empty checkboxes, radio buttons and multiples (checkboxes, selects) should not be passed in the payload
+        if(!(!fieldState(field).value && ['checkbox','radio'].includes(field.type) || (Array.isArray(fieldState(field).value) && fieldState(field).value.length === 0))){
+            body[field.name] = fieldState(field).value
+        }
     }
     return body
 }
