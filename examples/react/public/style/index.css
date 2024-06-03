@@ -1,18 +1,29 @@
-/* example form css */
+@import url('pico/pico.min.css');
 
 h1{
   text-align: center;
+  font-size: 400%;
 }
 
-#form1{
+header{
+  padding:2vh 0 3vh;
+}
+
+/* example forms css */
+
+form{
   display: flex;
   flex-direction: column;
   margin:2vh 25%;
 }
 
-#form1 input, 
-#form1 select {
+input, 
+select {
   margin-bottom: 1vh;
+}
+
+button{
+  width: 100%;
 }
 
 /* example loader bar at the top of the viewport when form is processing */

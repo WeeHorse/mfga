@@ -1,4 +1,4 @@
-import { watchFormState, handleSubmit } from "mfga"
+import { watchFormState, handleSubmit } from "../../../../index.js"
 import { useLoaderData } from 'react-router-dom'
 
 export default function () {
@@ -6,13 +6,13 @@ export default function () {
     const data = useLoaderData()
 
     return (
-        <form id="form1" onSubmit={handleSubmit} onChange={watchFormState} method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
+        <form id="form-using-loader-data" onSubmit={handleSubmit} onChange={watchFormState} method="post" action="https://1589dbb9-350b-40d2-9f8f-dd9df788b78f.mock.pstmn.io/save">
 
-        <input type="hidden" name="hidden_id" value={11}/>
+        <input type="hidden" name="hidden_id" value="11"/>
 
         <label htmlFor="email">Email</label>
         <input type="email" name="email" defaultValue={data?.email}/>
-
+                
         <label htmlFor="password">Password</label>
         <input type="password" name="password" defaultValue={data?.password}/>
 
@@ -52,6 +52,7 @@ export default function () {
 
         
         <input type="submit" disabled value="Send"/>
+        <p><em>Inspect the payload in the Network tab in Developer Tools</em></p>
     </form>
     )
 }

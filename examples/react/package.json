@@ -8,9 +8,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "mfga": "^2.1.2",
+    "@picocss/pico": "^2.0.6",
+    "mfga": "^2.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
