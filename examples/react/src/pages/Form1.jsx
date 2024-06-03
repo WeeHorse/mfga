@@ -5,7 +5,7 @@ export default function () {
     return (
     <form id="form1" onSubmit={handleSubmit} onChange={watchFormState} method="post" action="https://api.restful-api.dev/objects">        
         <h2>Basic form fields</h2>        
-        
+
         <label htmlFor="name">Name</label>
         <input name="name"/>
         
